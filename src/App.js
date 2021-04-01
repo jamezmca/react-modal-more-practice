@@ -1,23 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useRef } from 'react'
+import './App.css'
+import { Modal } from './Modal'
 
 function App() {
+
+  const modalRef = useRef()
+
+  function openModal() {
+    modalRef.current.openModal()
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <button onClick={openModal}>Open Modal</button>
+      <Modal ref={modalRef}>
+        <h1>Modal Header</h1>
+        <p>lorem ispusmsadaklsjdalksjdalksjdalkdfja sldf ja</p>
+        <button onClick={() => modalRef.current.close()}>Close</button>
+      </Modal>
     </div>
   );
 }
